@@ -6,9 +6,9 @@ import Link from "next/link";
 export default async function Products() {
 
     // const response = await fetch('https://fakestoreapi.com/products');
-    const response = await fetch(`${process.env.NEXT_URL}/api/products`);
-    const data = await response.json();
-    console.log(data)
+    // const response = await fetch(`${process.env.NEXT_URL}/api/products`);
+    // const data = await response.json();
+    // console.log(data)
 
     return (
         <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
