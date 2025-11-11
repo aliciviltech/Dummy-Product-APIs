@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 import Image from "next/image";
 import { AllProducts } from "./AllProducts";
 import Link from "next/link";
