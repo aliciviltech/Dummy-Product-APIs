@@ -58,9 +58,19 @@ export default function Home() {
         />
       </div>
 
+      {/* Header */}
+      <header className="w-full fixed top-0 left-0  z-10 bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl ">
+        <h1
+          className="text-3xl px-6 py-4 select-none font-bold font-momo text-center sm:text-left bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-blue-500"
+        >
+          Engineer MA
+        </h1>
+      </header>
+
+
       {/* Hero Section */}
       <motion.section
-        className="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-6 py-20"
+        className="relative h-[clamp(700px,90vh,700px)]  flex flex-col justify-center items-center text-center px-6 py-20"
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
         variants={containerVariants}
