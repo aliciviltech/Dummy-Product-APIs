@@ -5,7 +5,7 @@ import Link from "next/link";
 export default async function Products() {
 
     // const response = await fetch('https://fakestoreapi.com/products');
-    const response = await fetch('http://localhost:3000/api/products');
+    const response = await fetch(`${process.env.NEXT_URL}/api/products`);
     const data = await response.json();
     console.log(data)
 
