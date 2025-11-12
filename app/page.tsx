@@ -1,9 +1,13 @@
 "use client"
+import Header from "@/sections/Header"
 import { motion } from "framer-motion"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [isOpen, setOpen] = useState(false)
+
 
   useEffect(() => {
     setIsLoaded(true)
@@ -47,35 +51,29 @@ export default function Home() {
       {/* Background decoration */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-40 right-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"
-          animate={isLoaded ? { scale: [1, 1.2, 1] } : {}}
+          className="absolute top-40 right-40 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"
+          animate={isLoaded ? { scale: [0.8, 1.2, 0.8] } : {}}
           transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY }}
         />
         <motion.div
-          className="absolute bottom-40 left-40 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
-          animate={isLoaded ? { scale: [1.2, 1, 1.2] } : {}}
+          className="absolute bottom-40 left-40 w-96 h-96 bg-purple-700/20 rounded-full blur-3xl"
+          animate={isLoaded ? { scale: [1.2, 0.5, 1.2] } : {}}
           transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY }}
         />
       </div>
 
-      {/* Header */}
-      <header className="w-full fixed top-0 left-0  z-10 bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl ">
-        <h1
-          className="text-3xl px-6 py-4 select-none font-bold font-momo text-center sm:text-left bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-blue-500"
-        >
-          Engineer MA
-        </h1>
-      </header>
-
+      {/* Header section */}
+      <Header/>
+      
 
       {/* Hero Section */}
       <motion.section
-        className="relative h-[clamp(700px,90vh,700px)]  flex flex-col justify-center items-center text-center px-6 py-20"
+        className="relative h-[90vh]  flex flex-col justify-center items-center text-center px-6 py-20"
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
         variants={containerVariants}
       >
-        <motion.div variants={itemVariants} className="max-w-4xl">
+        <motion.div variants={itemVariants} className="max-w-4xl mt-40">
           <motion.h1
             className="text-6xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300 mb-6"
             variants={itemVariants}
@@ -89,17 +87,19 @@ export default function Home() {
         </motion.p>
 
         <motion.div variants={itemVariants} className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <Link href={'/explore-api'}>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full font-semibold text-lg shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all"
+            className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full font-semibold text-lg shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all cursor-pointer"
           >
             Explore APIs
           </motion.button>
+          </Link>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold text-lg hover:bg-white/20 transition-all"
+            className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold text-lg hover:bg-white/20 transition-all cursor-pointer"
           >
             View Docs
           </motion.button>
@@ -243,7 +243,7 @@ export default function Home() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full font-bold text-lg shadow-lg shadow-cyan-500/40 hover:shadow-cyan-500/60 transition-all"
+            className="px-10 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-full font-bold text-lg shadow-lg shadow-cyan-500/40 hover:shadow-cyan-500/60 transition-all cursor-pointer"
           >
             Explore APIs
           </motion.button>

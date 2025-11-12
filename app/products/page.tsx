@@ -2,6 +2,9 @@
 import Image from "next/image";
 import { AllProducts } from "./AllProducts";
 import Link from "next/link";
+import Header from "@/sections/Header";
+import SecondaryButton from "@/components/Buttons/SecondaryButton";
+import Spacer from "@/components/spacer";
 
 export default async function Products() {
 
@@ -12,7 +15,16 @@ export default async function Products() {
 
     return (
         <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
-            <h1 className="w-full text-3xl px-6 py-4 text-center select-none font-bold font-sans text-cyan-500 mb-10">All Products</h1>
+            <Header/>
+            <Spacer height="h-32"/>
+
+            <div className="buttons flex gap-10 justify-center">
+                <SecondaryButton text="Fashion Products"/>
+                <SecondaryButton text="Stationary Products"/>
+                <SecondaryButton text="Food Products"/>
+            </div>
+
+            <h1 className="w-full mt-10 text-3xl px-6 py-4 text-center select-none font-bold font-sans text-cyan-500 mb-10">All Products</h1>
             <div className="flex gap-10 flex-wrap justify-center">
                 {
                     AllProducts.map((item, i) =>
