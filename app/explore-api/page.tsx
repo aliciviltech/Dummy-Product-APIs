@@ -1,12 +1,11 @@
 "use client"
-import { Cross as Hamburger } from 'hamburger-react'
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
 import Link from 'next/link'
 import Header from '@/sections/Header'
 import Spacer from '@/components/spacer'
 import Image from 'next/image'
-import { AllProducts } from '../products/AllProducts'
+import { FashionProducts, StationaryProducts } from '../products/AllProducts'
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -16,38 +15,10 @@ export default function Home() {
     setIsLoaded(true)
   }, [])
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  }
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" as const },
-    },
-  }
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-    hover: {
-      y: -8,
-      transition: { duration: 0.3 },
-    },
-  }
+
+
 
   return (
     <main className="font-sans bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
@@ -104,24 +75,26 @@ export default function Home() {
 
 
           <div className="relative p-8 md:p-12 font-mono text-sm overflow-x-auto">
-            <p className="text-cyan-300 mb-4">https://dummy-product-api.vercel.app/api/products</p>
+            <Link href={'https://dummy-product-api.vercel.app/api/fashion-products'} className="text-cyan-300 mb-4">https://dummy-product-api.vercel.app/api/fashion-products</Link>
             <pre className="text-slate-200">
               {`[
-  { 
-        id: '1', 
+ {
+        id: '1',
         title: "Men Shirt 1",
-        mainCategory:"fashion", 
-        category: "men", 
+        mainCategory: "fashion",
+        category: "men",
         type: "shirts",
-        imageURL:'/images/fashion-products/shirt1.jpeg' 
+        imageURL: '/images/fashion-products/shirt1.jpeg',
+        price:300
     },
-    { 
-        id: '2', 
-        title: "Men Shirt 2", 
-        mainCategory:"fashion",
-        category: "men", 
+    {
+        id: '2',
+        title: "Men Shirt 2",
+        mainCategory: "fashion",
+        category: "men",
         type: "shirts",
-        imageURL:'/images/fashion-products/shirt2.jpeg' 
+        imageURL: '/images/fashion-products/shirt2.jpeg',
+        price:300
     },
     // ... more products
 ]`}
@@ -129,14 +102,14 @@ export default function Home() {
                 <Spacer height='h-10'/>
             <div className='relative'>
               <p className="text-white mb-6">The imageURL contains the image of a product, example:</p>
-              <Image src={AllProducts[0].imageURL} width={100} height={100} alt='image'/>
+              <Image src={FashionProducts[0].imageURL} width={100} height={100} alt='image'/>
               <p className="text-white mt-6">And other fields as shown in above json data</p>
               {/* <ul className='pl-6 list-disc'>
-                <li>id: {AllProducts[0].id}</li>
-                <li>title: {AllProducts[0].title}</li>
-                <li>category: {AllProducts[0].category}</li>
-                <li>mainCategory: {AllProducts[0].mainCategory}</li>
-                <li>type: {AllProducts[0].type}</li>
+                <li>id: {FashionProducts[0].id}</li>
+                <li>title: {FashionProducts[0].title}</li>
+                <li>category: {FashionProducts[0].category}</li>
+                <li>mainCategory: {FashionProducts[0].mainCategory}</li>
+                <li>type: {FashionProducts[0].type}</li>
               </ul> */}
 
             </div>
@@ -172,24 +145,29 @@ export default function Home() {
 
 
           <div className="relative p-8 md:p-12 font-mono text-sm overflow-x-auto">
-            <p className="text-cyan-300 mb-4">https://dummy-product-api.vercel.app/api/products</p>
+            <Link href={'https://dummy-product-api.vercel.app/api/stationary-products'} className="text-cyan-300 mb-4">https://dummy-product-api.vercel.app/api/stationary-products</Link>
             <pre className="text-slate-200">
               {`[
-  { 
-        id: '1', 
-        title: "Men Shirt 1",
-        mainCategory:"fashion", 
-        category: "men", 
-        type: "shirts",
-        imageURL:'/images/fashion-products/shirt1.jpeg' 
+  {
+        id: 'st1',
+        title: 'My pencil (Wow) Dollar 12 pieces',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        price: 210,
+        imageURL: '/images/stationary-products/my_pencil_dollar.jpg',
+        mainCategory: 'stationary',
+        category: 'school-office',
+        brand: 'dollar',
+        section: '',
     },
-    { 
-        id: '2', 
-        title: "Men Shirt 2", 
-        mainCategory:"fashion",
-        category: "men", 
-        type: "shirts",
-        imageURL:'/images/fashion-products/shirt2.jpeg' 
+    {
+        id: 'st2',
+        title: 'Apple Sharpener',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        price: 0,
+        imageURL: '/images/stationary-products/apple_sharpener.jpeg',
+        mainCategory: 'stationary',
+        category: 'school-office',
+        section: '',
     },
     // ... more products
 ]`}
@@ -197,14 +175,14 @@ export default function Home() {
                 <Spacer height='h-10'/>
             <div className='relative'>
               <p className="text-white mb-6">The imageURL contains the image of a product, example:</p>
-              <Image src={AllProducts[0].imageURL} width={100} height={100} alt='image'/>
+              <Image src={StationaryProducts[0].imageURL} width={100} height={100} alt='image'/>
               <p className="text-white mt-6">And other fields as shown in above json data</p>
               {/* <ul className='pl-6 list-disc'>
-                <li>id: {AllProducts[0].id}</li>
-                <li>title: {AllProducts[0].title}</li>
-                <li>category: {AllProducts[0].category}</li>
-                <li>mainCategory: {AllProducts[0].mainCategory}</li>
-                <li>type: {AllProducts[0].type}</li>
+                <li>id: {FashionProducts[0].id}</li>
+                <li>title: {FashionProducts[0].title}</li>
+                <li>category: {FashionProducts[0].category}</li>
+                <li>mainCategory: {FashionProducts[0].mainCategory}</li>
+                <li>type: {FashionProducts[0].type}</li>
               </ul> */}
 
             </div>
